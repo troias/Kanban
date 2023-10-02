@@ -1,4 +1,5 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useId } from "react";
+
 import "./index.css";
 
 interface Task {
@@ -63,8 +64,8 @@ interface Props {}
 
 export default function KanbanBoard(props: Props) {
   const [tasks, dispatch] = useReducer(reducer, [
-    { id: 1, name: "1", stage: 0 },
-    { id: 2, name: "2", stage: 0 },
+    { id: 1, name: "Task 1", stage: 0 },
+    { id: 2, name: "Task 2", stage: 0 },
   ]);
 
   const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
@@ -105,7 +106,7 @@ export default function KanbanBoard(props: Props) {
           id="create-task-input"
           type="text"
           className="w-56 sm:w-64 lg:w-96 xl:w-128 border rounded py-2 px-3 mr-2"
-          placeholder="New task name"
+          placeholder="Enter new task name"
           data-testid="create-task-input"
           onChange={inputHandler}
           value={message}
